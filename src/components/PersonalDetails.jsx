@@ -1,25 +1,29 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import Container from '@mui/material/Container';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup'
 
 const PersonalDetails = () => {
     const navigate = useNavigate();
+    const schema = yup.object({
+        Name: yup.string().required('Name is required'),
+        Email: yup.string().default('').required('Email is required'),
+        Mobile: yup.string().min(10).max(10).required('Mobile number is required'),
+        Address: yup.string().default('').required('Address is required')
+    }).required()
 
     const {
-        register,
+        control,
         handleSubmit,
+        formState: {errors}
     } = useForm({
-        defaultValues: {
-            Name: "",
-            Email: "",
-            Mobile: "",
-            Address: ""
-        }
+        resolver: yupResolver(schema)
     })
 
     const onSubmit = (data) => {
@@ -41,14 +45,18 @@ const PersonalDetails = () => {
                         <input type="text" placeholder='Enter Your Name' {...register("Name", {
                             required: "Enter your fullname"
                         })} /> */}
-                            <TextField
-                                required
-                                id='name'
-                                label='Enter your fullname.'
-                                variant='standard'
-                                {...register("Name", {
-                                    required: "Enter your fullname"
-                                })}
+                            <Controller
+                                name='Name'
+                                control={control}
+                                render={({ field }) => (
+                                    <TextField
+                                        id='name'
+                                        label='Enter your Fullname.'
+                                        variant='standard'
+                                        {...field}
+                                        helperText={errors.Name ? errors.Name.message:null}
+                                    />
+                                )}
                             />
                         </div>
 
@@ -60,14 +68,18 @@ const PersonalDetails = () => {
                         <input type="email" placeholder='Enter Your Email' {...register("Email", {
                             required: "Email is required"
                         })} /> */}
-                            <TextField
-                                required
-                                id='email'
-                                label='Enter your Email.'
-                                variant='standard'
-                                {...register("Email", {
-                                    required: "Enter your Email."
-                                })}
+                            <Controller
+                                name='Email'
+                                control={control}
+                                render={({ field }) => (
+                                    <TextField
+                                        id='email'
+                                        label='Enter your Email.'
+                                        variant='standard'
+                                        {...field}
+                                        helperText={errors.Email ? errors.Email.message:null}
+                                    />
+                                )}
                             />
                         </div>
 
@@ -79,15 +91,17 @@ const PersonalDetails = () => {
                         <input type="number" placeholder='Enter Your Phone Number' {...register("Mobile", {
                             required: "Mobile Number is required"
                         })} /> */}
-                            <TextField
-                                type='number'
-                                required
-                                id='phone'
-                                label='Enter your Mobile Number.'
-                                variant='standard'
-                                {...register("Mobile", {
-                                    required: "Enter your Mobile Number."
-                                })}
+                            <Controller
+                                name='Mobile'
+                                control={control}
+                                render={({ field }) => (<TextField
+                                    type='number'
+                                    id='phone'
+                                    label='Enter your Mobile Number.'
+                                    variant='standard'
+                                    {...field}
+                                    helperText={errors.Mobile ? errors.Mobile.message:null}
+                                />)}
                             />
                         </div>
 
@@ -99,14 +113,18 @@ const PersonalDetails = () => {
                         <input type="text" placeholder='Enter Your Address' {...register("Address", {
                             required: "Address is required"
                         })} /> */}
-                            <TextField
-                                required
-                                id='address'
-                                label='Enter your Address.'
-                                variant='standard'
-                                {...register("Address", {
-                                    required: "Enter your Address."
-                                })}
+                            <Controller
+                                name='Address'
+                                control={control}
+                                render={({ field }) => (
+                                    <TextField
+                                        id='address'
+                                        label='Enter your Address.'
+                                        variant='standard'
+                                        {...field}
+                                        helperText={errors.Address ? errors.Address.message:null}
+                                    />
+                                )}
                             />
                         </div>
 

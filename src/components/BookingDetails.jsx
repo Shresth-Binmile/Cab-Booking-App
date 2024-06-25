@@ -10,17 +10,20 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
+import * as yup from 'yup';
+import {yupResolver} from '@hookform/resolvers/yup'
 
 
 const BookingDetails = () => {
 
     const navigate = useNavigate()
+    const schema = yup.object({
+        ScheduleDate: yup.date().required().default(dayjs(Date.now())),
+        ScheduleTime: yup.date().required().default(dayjs(Date.now()))
+    }).required("Date & Time fields are mandatory")
 
     const { control, handleSubmit } = useForm({
-        defaultValues: {
-            ScheduleDate: dayjs(Date.now()),
-            ScheduleTime: dayjs(Date.now())
-        }
+        resolver: yupResolver(schema)
     })
 
     const onSubmit = (data) => {
