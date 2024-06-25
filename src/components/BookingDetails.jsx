@@ -27,18 +27,10 @@ const BookingDetails = () => {
     })
 
     const onSubmit = (data) => {
-        // console.log(dateObject.toISOString())
-        // console.log(data)
         localStorage.setItem("BookingDetails", JSON.stringify(data))
 
         const dataFromLocalStorage = JSON.parse(localStorage.getItem("BookingDetails"))
         const { ScheduleDate, ScheduleTime } = dataFromLocalStorage
-        // console.log(ScheduleDate, ScheduleTime)
-
-        // const formattedDate = dayjs(ScheduleDate).format('YYYY-MM-DD');
-        // const formattedTime = dayjs(ScheduleTime).format('HH:mm:ss')
-        // console.log(formattedDate, formattedTime)
-        // console.log(JSON.parse(localStorage.getItem('BookingDetails')))
         navigate('/ticket')
     }
 
@@ -50,7 +42,6 @@ const BookingDetails = () => {
                 <Box p={6} sx={{ border: '1px solid grey' }}>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* Choose Date */}
-                        {/* <input type="date" {...register("ScheduleDate")} /> */}
                         <Controller
                             name="ScheduleDate"
                             control={control}
@@ -60,7 +51,6 @@ const BookingDetails = () => {
                         />
 
                         {/* Choose Time */}
-                        {/* <input type="time" {...register("ScheduleTime")} /> */}
                         <Controller
                             name="ScheduleTime"
                             control={control}
@@ -74,7 +64,6 @@ const BookingDetails = () => {
                         {/* Link to Ticket */}
                         <Button sx={{ mt: 5 }} type='submit' variant='outlined'>
                             Submit
-                            {/* <Link to="/ticket">Submit</Link> */}
                         </Button>
 
                     </form>

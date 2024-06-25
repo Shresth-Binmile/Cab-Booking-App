@@ -41,10 +41,6 @@ const PersonalDetails = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         {/* Name */}
                         <div>
-                            {/* <label htmlFor="Name">Full Name: </label>
-                        <input type="text" placeholder='Enter Your Name' {...register("Name", {
-                            required: "Enter your fullname"
-                        })} /> */}
                             <Controller
                                 name='Name'
                                 control={control}
@@ -64,10 +60,6 @@ const PersonalDetails = () => {
 
                         {/* Email */}
                         <div>
-                            {/* <label htmlFor="Email">Email: </label>
-                        <input type="email" placeholder='Enter Your Email' {...register("Email", {
-                            required: "Email is required"
-                        })} /> */}
                             <Controller
                                 name='Email'
                                 control={control}
@@ -87,10 +79,6 @@ const PersonalDetails = () => {
 
                         {/* Phone Number */}
                         <div>
-                            {/* <label htmlFor="Phone">Phone Number: </label>
-                        <input type="number" placeholder='Enter Your Phone Number' {...register("Mobile", {
-                            required: "Mobile Number is required"
-                        })} /> */}
                             <Controller
                                 name='Mobile'
                                 control={control}
@@ -109,10 +97,6 @@ const PersonalDetails = () => {
 
                         {/* Address */}
                         <div>
-                            {/* <label htmlFor="Address">Address: </label>
-                        <input type="text" placeholder='Enter Your Address' {...register("Address", {
-                            required: "Address is required"
-                        })} /> */}
                             <Controller
                                 name='Address'
                                 control={control}
@@ -133,7 +117,6 @@ const PersonalDetails = () => {
                         {/* Link to Choose Vehicle */}
                         <Button type='submit' variant='outlined'>
                             Next
-                            {/* <Link type='submit' to="/choose-vehicle">Next</Link> */}
                         </Button>
                     </form>
                 </Box>

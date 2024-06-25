@@ -36,17 +36,7 @@ const ChooseVehicle = () => {
 
                 <Box p={6} sx={{ border: '1px solid grey' }}>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* Select for Vehicle type */}
-                        {/* <select id="Vehicle" {...register("VehicleType", {
-                            required: "Vehicle is required"
-                        })}>
-                            <option value="Mustang">Mustang</option>
-                            <option value="Ferrari">Ferrari</option>
-                            <option value="Lamborgini">Lamborgini</option>
-                            <option value="Porsche">Porsche</option>
-                            <option value="Audi">Audi</option>
-                            <option value="RollsRoyce">RollsRoyce</option>
-                        </select> */}
+                        
                         <Controller
                             name='VehicleType'
                             control={control}
@@ -64,12 +54,6 @@ const ChooseVehicle = () => {
                                                 <MenuItem key={index} value={`${vehicle}`}>{vehicle}</MenuItem>
                                             ))
                                         }
-                                        {/* <MenuItem value={"Mustang"}>Mustang</MenuItem>
-                                <MenuItem value={"Ferrari"}>Ferrari</MenuItem>
-                                <MenuItem value={"Lamborgini"}>Lamborgini</MenuItem>
-                                <MenuItem value={"Porsche"}>Porsche</MenuItem>
-                                <MenuItem value={"Audi"}>Audi</MenuItem>
-                                <MenuItem value={"RollsRoyce"}>RollsRoyce</MenuItem> */}
                                     </Select>
                                     {errors.VehicleType? errors.VehicleType.message : null}
                                 </FormControl>
@@ -78,15 +62,6 @@ const ChooseVehicle = () => {
 
                         <br />
 
-                        {/* Vehicle Model No. */}
-                        {/* <select id="VehicleModel" {...register("VehicleModel")}>
-                            <option value="Model1">Model1</option>
-                            <option value="Model2">Model2</option>
-                            <option value="Model3">Model3</option>
-                            <option value="Model4">Model4</option>
-                            <option value="Model5">Model5</option>
-                            <option value="Model6">Model6</option>
-                        </select> */}
                         <Controller
                             name='VehicleModel'
                             control={control}
@@ -104,12 +79,6 @@ const ChooseVehicle = () => {
                                                 <MenuItem key={index} value={`${model}`}>{model}</MenuItem>
                                             ))
                                         }
-                                        {/* <MenuItem value={"Model1"}>Model1</MenuItem>
-                                <MenuItem value={"Model2"}>Model2</MenuItem>
-                                <MenuItem value={"Model3"}>Model3</MenuItem>
-                                <MenuItem value={"Model4"}>Model4</MenuItem>
-                                <MenuItem value={"Model5"}>Model5</MenuItem>
-                                <MenuItem value={"Model6"}>Model6</MenuItem> */}
                                     </Select>
                                     {errors.VehicleModel? errors.VehicleModel.message : null}
                                 </FormControl>
@@ -121,7 +90,6 @@ const ChooseVehicle = () => {
                         {/* Link to Booking Details */}
                         <Button sx={{ mt: 3 }} type='submit' variant='outlined'>
                             Next
-                            {/* <Link to="/booking-details">Next</Link> */}
                         </Button>
                     </form>
                 </Box>
